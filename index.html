@@ -428,6 +428,8 @@ left: 60%;
  </div>
  
  </div>
+
+
 </div>
 <script>
 var loader = document.getElementById("preloader");
@@ -471,12 +473,27 @@ var countdownfunction = setInterval(function() {
   }
 }, 1000);
 
-var theme = document.getElementById("theme");
 
 
 var imgloc = document.getElementById("logo-img");
-setInterval(() => { 
+
 var themeTime = new Date().getHours();
+
+if(themeTime > 9 && themeTime < 17)
+
+{
+  document.body.classList.add("chngTheme");
+  imgloc.src = 'images/logo-green.png';
+  
+}
+else
+{
+  document.body.classList.remove("chngTheme");
+  imgloc.src = 'images/logo-white.png';
+}
+
+
+setInterval(() => { 
   if(themeTime > 9 && themeTime < 17)
 
 {
