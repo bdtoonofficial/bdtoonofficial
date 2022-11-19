@@ -68,16 +68,23 @@ body, html {
   --button: #3e8e5c;
 }
 
-#preloader{
-  display: block;
-  background: #fff  url(images/loader.gif) no-repeat center center;
-  background-size: 10%;
-  height: 100vh;
+.loader{
   width: 100%;
-  position: fixed;
-  z-index: 100;
-  opacity: 100%;
-  transition: all 0.5s ease-out;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader::after{
+content: "";
+width: 3rem;
+height: 3rem;
+border: 0.3rem solid rgba(0, 0, 0, 0.1);
+border-radius: 50%;
+border-top-color: var(--secondary-color);
+animation: 1s loading-anim ease-in-out infinite;
 }
 
 .bgimg {
@@ -281,6 +288,14 @@ font-size: 30px;
 color: var(--secondary-color);   
   }
 
+
+@keyframes loading-anim {
+  to{
+    transform: rotate(1turn);
+  }
+  
+}
+
 @media only screen and (max-device-width: 480px) {
   
   .topleft{
@@ -366,9 +381,7 @@ left: 60%;
 
 </style>
 <body>
-<div id="preloader">
-
-</div>
+<div class="loader" id="preloader"></div>
 
 <div class="bgimg">
   <div class="topleft">
@@ -474,6 +487,7 @@ var countdownfunction = setInterval(function() {
 }, 1000);
 
 
+//Auto theme changing codes
 
 var imgloc = document.getElementById("logo-img");
 
@@ -491,7 +505,6 @@ else
   document.body.classList.remove("chngTheme");
   imgloc.src = 'images/logo-white.png';
 }
-
 
 setInterval(() => { 
   if(themeTime > 9 && themeTime < 17)
